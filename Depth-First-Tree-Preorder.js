@@ -29,7 +29,7 @@ class BinarySearchTree {
                 if(current.right === null){
                     current.right = newNode;
                     return this;
-                } 
+                }
                 current = current.right;
             }
         }
@@ -85,6 +85,9 @@ class BinarySearchTree {
             data.push(node.value);
             if(node.left) traverse(node.left);
             if(node.right) traverse(node.right);
+            if (node.left && node.right === null) {
+                data.push('null')
+            }
         }
         traverse(this.root);
         return data;
@@ -113,15 +116,23 @@ class BinarySearchTree {
 
 
 var tree = new BinarySearchTree();
-tree.insert(10);
-tree.insert(6);
-tree.insert(15);
-tree.insert(3);
-tree.insert(8);
-tree.insert(20);
-tree.DFSPreOrder();
-tree.DFSPostOrder();
-tree.DFSInOrder();
+let array = [8, 5, 1, 7, 10, 12];
+
+for (let i = 0; i < array.length; i++) {
+    tree.insert(array[i]);
+}
+
+console.log(tree.DFSPreOrder());
+
+// tree.insert(10);
+// tree.insert(6);
+// tree.insert(15);
+// tree.insert(3);
+// tree.insert(8);
+// tree.insert(20);
+
+// tree.DFSPostOrder();
+// tree.DFSInOrder();
 
 
 
